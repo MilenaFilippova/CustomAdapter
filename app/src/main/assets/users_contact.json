@@ -1,0 +1,22 @@
+{
+  "user":{
+    "name": "Katya",
+    "phone": "7536",
+    "sex": "woman"
+  },
+  "user": {
+    "name": "Ira",
+    "phone": "8008",
+    "sex": "woman"
+  },
+  "user": {
+    "name": "Vova",
+    "phone": "1002",
+    "sex": "man"
+  },
+  "user": {
+    "name": "Undefined",
+    "phone": "0850",
+    "sex": "unknown"
+  }
+}
