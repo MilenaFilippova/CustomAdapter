@@ -18,11 +18,16 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
 {
-
-
+    UserListAdapter adapter;
     ListView listView;
-    ArrayList<User> susers = new ArrayList<>();
-    ArrayList<User> users = new ArrayList<>();
+
+    //кнопки для сортировки
+    Button btn_name;
+    Button btn_phone;
+    Button btn_sex;
+
+    //ArrayList<User> susers = new ArrayList<>();
+   // ArrayList<User> users = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,10 +35,16 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //привязываем к разметке
+        listView = findViewById(R.id.list);
+
+        btn_name = findViewById(R.id.name);
+        btn_phone = findViewById(R.id.phone_number);
+        btn_sex = findViewById(R.id.sex);
+
+
         String json = null;
         byte[] buffer = null;
-        //для работы с внутренним json необходим  AssetManager
-        AssetManager textik = getResources().getAssets();
         try
         {
             //получаем данные из json
@@ -51,12 +62,32 @@ public class MainActivity extends AppCompatActivity
         Gson gson = new Gson();
         UserCard data = gson.fromJson(json, UserCard.class);
 
-        UserListAdapter adapter;
         adapter = new UserListAdapter(this, data.users);
-
         listView.setAdapter(adapter);
 
     }
 
+
+
+    public void onClick(View v)
+    {
+        switch (v.getId())
+        {
+            //смотрим на что нажал пользователь и вызываем сортировку по этому критерию
+            case R.id.name:
+                adapter.sort_users("name");
+                break;
+            case R.id.phone_number:
+                adapter.sort_users("phoneNumber");
+                break;
+            case R.id.sex:
+                adapter.sort_users("sex");
+                break;
+        }
+        //обновляем карточки
+        adapter.notifyDataSetChanged();
+        listView.setAdapter(adapter);
+
+    }
 }
 
