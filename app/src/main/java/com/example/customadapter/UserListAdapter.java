@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,21 +13,26 @@ import android.widget.TextView;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 public class UserListAdapter extends BaseAdapter {
-    Context ctx; ArrayList<User> users;
+    Context ctx;
+    ArrayList<User> users;
     // TODO: реализовать сортировку по каждому из полей
     // класса: sex, name, phoneNumber
 
-    public UserListAdapter(Context ctx, ArrayList<User> users) {
+    public UserListAdapter(Context ctx, ArrayList<User> users)
+    {
         this.ctx = ctx;
         this.users = users;
     }
 
     @Override
     //получает коллекцию
-    public int getCount() {
+    public int getCount()
+    {
         return users.size();
     }
     //получает элемент
@@ -42,21 +46,6 @@ public class UserListAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
-
-    /*public void sort_data(String s)
-    {
-        switch (s){
-            case "sex":
-                Collections.sort(users, User.SEX_COMPARATOR);
-                break;
-            case "phone":
-                Collections.sort(users, User.PHONE_NUMBER_COMPARATOR);
-                break;
-            case "name":
-                Collections.sort(users, User.NAME_COMPARATOR);
-        }
-    }*/
-
 
 
     @Override
@@ -76,6 +65,7 @@ public class UserListAdapter extends BaseAdapter {
                 v.setBackgroundColor(Color.RED);
             }
         });
+
         TextView tvName = convertView.findViewById(R.id.name);
         TextView tvPhone = convertView.findViewById(R.id.phone);
 
@@ -89,7 +79,42 @@ public class UserListAdapter extends BaseAdapter {
             case UNKNOWN: ivUserpic.setImageResource(R.drawable.user_unknown); break;
         }
         Date finish = new Date();
-        Log.d("mytag", "getView time: "+(finish.getTime()-begin.getTime()));
+        Log.d("mytag", "time: "+(finish.getTime()-begin.getTime()));
         return convertView;
+    }
+
+
+    public void sort_users(String str)
+    {
+        switch (str) {
+            //сортировка коллекции по имени
+
+            case "name":
+                Collections.sort(users, new Comparator<User>() {
+                    public int compare(User o1, User o2) {
+                        return o1.name.compareTo(o2.name);
+                    }
+                });
+
+             //сортировка коллекции по телефону
+            case "phoneNumber":
+                Collections.sort(users, new Comparator<User>() {
+                    public int compare(User o1, User o2) {
+                        return o1.phoneNumber.compareTo(o2.phoneNumber);
+                    }
+                });
+                break;
+
+            //сортировка коллекции по полу
+            case "sex":
+                Collections.sort(users, new Comparator<User>() {
+                    public int compare(User o1, User o2) {
+                        return o1.sex.compareTo(o2.sex);
+                    }
+                });
+                break;
+
+
+        }
     }
 }
