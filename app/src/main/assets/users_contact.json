@@ -1,22 +1,56 @@
 {
-  "user":{
-    "name": "Katya",
-    "phone": "7536",
-    "sex": "woman"
-  },
-  "user": {
-    "name": "Ira",
-    "phone": "8008",
-    "sex": "woman"
-  },
-  "user": {
-    "name": "Vova",
-    "phone": "1002",
-    "sex": "man"
-  },
-  "user": {
-    "name": "Undefined",
-    "phone": "0850",
-    "sex": "unknown"
-  }
+  "users":
+  [
+    {
+      "name": "Katya",
+      "phoneNumber": "89041200004",
+      "sex": "WOMAN"
+    },
+    {
+      "name": "Ira",
+      "phoneNumber": "89041258885",
+      "sex": "WOMAN"
+    },
+
+    {
+      "name": "Vova",
+      "phoneNumber": "89047893164",
+      "sex": "MAN"
+    },
+    {
+      "name": "Dog",
+      "phoneNumber": "89041253000",
+      "sex": "UNKNOWN"
+    },
+    {
+      "name": "Katya",
+      "phoneNumber": "89041144164",
+      "sex": "WOMAN"
+    },
+    {
+      "name": "Kat",
+      "phoneNumber": "89041225164",
+      "sex": "UNKNOWN"
+    },
+    {
+      "name": "Kolya",
+      "phoneNumber": "89012253164",
+      "sex": "MAN"
+    },
+    {
+      "name": "Katya",
+      "phoneNumber": "89041744165",
+      "sex": "WOMAN"
+    },
+    {
+      "name": "KAT",
+      "phoneNumber": "89047225564",
+      "sex": "UNKNOWN"
+    },
+    {
+      "name": "Kolya",
+      "phoneNumber": "89041253164",
+      "sex": "MAN"
+    }
+  ]
 }
